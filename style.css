@@ -7,7 +7,7 @@ body {
 }
 
 body.day {
-    background: #e76262;
+    background: #f4f6fa;
     color: #000000;
 }
 
@@ -24,7 +24,7 @@ body.night {
     padding: 8px 14px;
     border-radius: 20px;
     border: none;
-    background-color: #001742;
+    background-color: #4e6ca3;
     color: #ffffff;
     cursor: pointer;
     font-size: 14px;
