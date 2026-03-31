@@ -11,7 +11,6 @@ function showSystemInfo() {
 function loadComments() {
   const commentsContainer = document.getElementById("comments");
   const url = "https://jsonplaceholder.typicode.com/posts/6/comments";
-
   if (!commentsContainer) return;
 
   commentsContainer.textContent = "Завантаження коментарів...";
