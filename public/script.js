@@ -73,12 +73,8 @@ function initFeedbackModal() {
 function getAutoThemeByTime() {
   const now = new Date();
   const hour = now.getHours();
-
-  if (hour >= 7 && hour < 21) {
-    return "day";
-  } else {
-    return "night";
-  }
+  if (hour >= 7 && hour < 21) return "day";
+  return "night";
 }
 
 function applyTheme(theme) {
@@ -88,11 +84,7 @@ function applyTheme(theme) {
   const toggleBtn = document.getElementById("theme-toggle");
   if (!toggleBtn) return;
 
-  if (theme === "night") {
-    toggleBtn.textContent = "Денна тема";
-  } else {
-    toggleBtn.textContent = "Нічна тема";
-  }
+  toggleBtn.textContent = theme === "night" ? "Денна тема" : "Нічна тема";
 }
 
 function initTheme() {
@@ -104,13 +96,58 @@ function initTheme() {
   if (!toggleBtn) return;
 
   toggleBtn.addEventListener("click", () => {
-    const currentTheme = document.body.classList.contains("night")
-      ? "night"
-      : "day";
+    const currentTheme = document.body.classList.contains("night") ? "night" : "day";
     const newTheme = currentTheme === "night" ? "day" : "night";
 
     applyTheme(newTheme);
     localStorage.setItem("theme", newTheme);
+  });
+}
+
+function initContactForm() {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  const statusEl = document.getElementById("form-status");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (statusEl) statusEl.textContent = "Відправляю...";
+
+    const fd = new FormData(form);
+    const payload = {
+      name: fd.get("name"),
+      email: fd.get("email"),
+      subject: fd.get("subject"),
+      message: fd.get("message"),
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        const msg = data.message || "Помилка відправки";
+        if (statusEl) statusEl.textContent = msg;
+        alert(msg);
+        return;
+      }
+
+      const okMsg = data.message || "Відправлено!";
+      if (statusEl) statusEl.textContent = okMsg;
+      alert(okMsg);
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      const msg = "Не вдалося з’єднатись із сервером";
+      if (statusEl) statusEl.textContent = msg;
+      alert(msg);
+    }
   });
 }
 
@@ -119,4 +156,5 @@ document.addEventListener("DOMContentLoaded", () => {
   loadComments();
   initFeedbackModal();
   initTheme();
+  initContactForm();
 });

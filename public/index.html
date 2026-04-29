@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Гриньов Максим</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle">Нічна тема</button>
+
+  <div class="container">
+    <h1>Гриньов Максим</h1>
+    <div class="subtitle">Початківець Frontend Розробник | Студент КБ-206</div>
+
+    <h2>Контакти</h2>
+    <p class="contacts">
+      м. Львів<br />
+      Електронна пошта: maksym.hrynov.kb.2024@lpnu.ua<br />
+      Телефон: +380993277506
+    </p>
+
+    <h2>Мета</h2>
+    <p>
+      Моя основна мета — розвиватися у сфері frontend-розробки, використовуючи знання з кібербезпеки для створення сучасних і безпечних веб-рішень.
+      Прагну застосовувати креативний підхід у розробці, розширювати досвід роботи з візуальною частиною сайтів і взаємодією з користувачами,
+      сприяти командній роботі і швидко навчатися новому.
+    </p>
+
+    <h2>Освіта</h2>
+    <p>
+      Національний університет “Львівська політехніка”<br />
+      Спеціальність: Кібербезпека<br />
+      Студент групи КБ-206 (триває навчання)
+    </p>
+
+    <h2>Ключові навички</h2>
+    <ul>
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>Git</li>
+      <li>GitHub</li>
+      <li>Python (базові знання)</li>
+      <li>Командна робота</li>
+    </ul>
+
+    <h2>Досвід та проєкти</h2>
+    <ul>
+      <li>Створення навчальних веб-сторінок як практичні завдання</li>
+      <li>Робота з системою контролю версій Git та сервісом GitHub</li>
+      <li>Вивчення основ розробки інтерфейсу користувача</li>
+    </ul>
+
+    <h2>Коментарі попередніх роботодавців</h2>
+    <div id="comments" class="comments">Завантаження коментарів...</div>
+
+    <h2>Інформація з localStorage</h2>
+    <section class="card contact">
+      <h3>SYSTEM INFO</h3>
+      <span id="system-info-text"></span>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026</span>
+  </footer>
+
+  <div id="feedback-modal" class="modal">
+    <div class="modal-content">
+      <span id="modal-close" class="modal-close">&times;</span>
+      <h2>Форма зворотного зв'язку</h2>
+
+      <form id="contact-form" class="feedback-form">
+        <label>
+          Ім’я:
+          <input type="text" name="name" required />
+        </label>
+
+        <label>
+          Email:
+          <input type="email" name="email" required />
+        </label>
+
+        <label>
+          Тема:
+          <input type="text" name="subject" required />
+        </label>
+
+        <label>
+          Повідомлення:
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+
+        <button type="submit">Відправити</button>
+        <div id="form-status" style="font-size:12px;"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
